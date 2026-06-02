@@ -11,7 +11,7 @@ namespace Madu
     {
         public static void MängiSöömist()
         {
-            // Käivitatakse taustal, et mäng ei jääks ootama
+            
             Task.Run(() => Console.Beep(800, 100));
         }
 

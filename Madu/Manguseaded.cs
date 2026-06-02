@@ -10,11 +10,11 @@ namespace Madu
     {
         public int Laius { get; set; }
         public int Kõrgus { get; set; }
-        public int KiirusMS { get; set; } // Viivitus millisekundites
+        public int KiirusMS { get; set; } 
 
         public ManguSeaded(int tase)
         {
-            // Raskusastme valik (1 - Lihtne, 2 - Keskmine, 3 - Raske)
+            
             switch (tase)
             {
                 case 1:

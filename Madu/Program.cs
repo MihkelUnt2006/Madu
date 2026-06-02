@@ -24,10 +24,9 @@ public class Program
         
         ManguSeaded seaded = new ManguSeaded(tase);
 
-        // 4. SEADISTAME AKNA SUURUSE VASTAVALT TASEMELE
         try
         {
-            // Lisame +5 varuruumi, et skoor ja tekstid ära mahuksid
+          
             Console.SetWindowSize(seaded.Laius + 5, seaded.Kõrgus + 5);
             Console.SetBufferSize(seaded.Laius + 5, seaded.Kõrgus + 5);
         }
@@ -50,10 +49,10 @@ public class Program
        
         kaart.Joonista();
 
-        // 6. MÄNGU PEATSÜKKEL
+     
         while (true)
         {
-            // Kontrollime kasutaja klahvivajutust
+          
             if (Console.KeyAvailable)
             {
                 ConsoleKeyInfo klahv = Console.ReadKey(true);
@@ -67,25 +66,25 @@ public class Program
                     uss.PraeguneSuund = Suund.Paremale;
             }
 
-            // Liigutame ussi edasi
+        
             uss.Liigu();
             Punkt pea = uss.HangiPea();
 
-            // KONTROLL: Kas põrkas vastu seina (kaarti)?
+           
             if (kaart.Takistused.Any(t => t.X == pea.X && t.Y == pea.Y))
             {
                 Heliefektid.MängiKaotust();
                 break;
             }
 
-            // KONTROLL: Kas uss hammustas iseennast?
+        
             if (uss.KasHammustasEnnast())
             {
                 Heliefektid.MängiKaotust();
                 break;
             }
 
-            // KONTROLL: Kas uss sõi toidu ära?
+           
             if (pea.X == toit.Asukoht.X && pea.Y == toit.Asukoht.Y)
             {
                 skoor += 10;
@@ -94,15 +93,13 @@ public class Program
                 Heliefektid.MängiSöömist();
             }
 
-            // Kuvame jooksva skoori mänguvälja all
+        
             Console.SetCursorPosition(0, seaded.Kõrgus + 1);
             Console.Write($"Skoor: {skoor} punkti");
 
-            // Mängu kiirus vastavalt valitud raskusastmele
             Thread.Sleep(seaded.KiirusMS);
         }
 
-        // 7. MÄNG LÄBI JA EDETABEL
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("=============================");
@@ -115,7 +112,6 @@ public class Program
         string nimi = Console.ReadLine();
         if (string.IsNullOrWhiteSpace(nimi)) nimi = "Tundmatu";
 
-        // Salvestame tulemuse ja kuvame TOP 5 edetabeli
         Edetabel.Salvesta(nimi, skoor);
         Edetabel.KuvaEdetabel();
 
