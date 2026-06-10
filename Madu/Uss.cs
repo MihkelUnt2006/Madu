@@ -19,7 +19,7 @@ namespace Madu
             // Loome ussi algse keha
             for (int i = 0; i < pikkus; i++)
             {
-                Punkt p = new Punkt(algX - i, algY, '*');
+                Punkt p = new Punkt(algX - i, algY, 'o');
                 keha.Add(p);
                 p.Joonista();
             }
@@ -29,7 +29,7 @@ namespace Madu
         {
             
             Punkt pea = keha.First();
-            Punkt uusPea = new Punkt(pea.X, pea.Y, '*');
+            Punkt uusPea = new Punkt(pea.X, pea.Y, 'O');
 
             
             switch (PraeguneSuund)
@@ -55,7 +55,7 @@ namespace Madu
 
         public void Kasva()
         {
-            keha.Add(new Punkt(keha.Last().X, keha.Last().Y, '*'));
+            keha.Add(new Punkt(keha.Last().X, keha.Last().Y, 'o'));
         }
         public bool KasHammustasEnnast()
         {
